@@ -1,0 +1,1 @@
+A Flask-based Blood Pressure Tracker that records daily systolic and diastolic readings, visualizes trends with interactive line charts, and provides automated health advice. Helps users monitor cardiovascular health and track long-term patterns.
