@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BP Analysis Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% if message %}
+            <h2>{{ message }}</h2>
+        {% else %}
+            <h1>Blood Pressure Report</h1>
+
+            <div class="results">
+                <p><strong>Average Systolic:</strong> {{ avg_sys }} mmHg</p>
+                <p><strong>Average Diastolic:</strong> {{ avg_dia }} mmHg</p>
+                <p><strong>Status:</strong> {{ status }}</p>
+                <p><strong>Advice:</strong> {{ advice }}</p>
+            </div>
+        {% endif %}
+
+        <a href="/"><button>Back</button></a>
+    </div>
+</body>
+</html>

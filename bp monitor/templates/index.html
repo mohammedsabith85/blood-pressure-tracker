@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Pressure Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Blood Pressure Monitor</h1>
+
+    <form id="bpForm" method="POST" action="/">
+        <input type="date" name="date" required>
+        <input type="number" name="systolic" placeholder="Systolic (120)" required>
+        <input type="number" name="diastolic" placeholder="Diastolic (80)" required>
+        <button type="submit">Save & Analyze</button>
+    </form>
+
+    <h2>Latest Advice</h2>
+    <p class="advice">{{ advice }}</p>
+
+    <h2>Stored Records</h2>
+    <table id="bpTable">
+        <tr><th>Date</th><th>Systolic</th><th>Diastolic</th></tr>
+        {% for r in readings %}
+        <tr>
+            <td>{{ r[2] }}</td>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Trend Line Chart</h2>
+    <canvas id="bpChart"></canvas>
+</div>
+
+<script>
+const chartLabels = [{% for r in readings %}"{{ r[2] }}",{% endfor %}];
+const systolicData = [{% for r in readings %}{{ r[0] }},{% endfor %}];
+const diastolicData = [{% for r in readings %}{{ r[1] }},{% endfor %}];
+
+const ctx = document.getElementById('bpChart').getContext('2d');
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: chartLabels,
+        datasets: [
+            {
+                label: "Systolic",
+                data: systolicData,
+                borderWidth: 3,
+                tension: 0.4
+            },
+            {
+                label: "Diastolic",
+                data: diastolicData,
+                borderWidth: 3,
+                tension: 0.4
+            },
+        ]
+    },
+    options: {
+        responsive: true,
+        scales: { y: { beginAtZero: false } }
+    }
+});
+</script>
+
+</body>
+</html>

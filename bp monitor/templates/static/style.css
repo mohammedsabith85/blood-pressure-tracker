@@ -1,0 +1,58 @@
+body {
+    background: linear-gradient(120deg, #6dd5ed, #2193b0);
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    width: 70%;
+    margin: auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+h1, h2 { text-align: center; }
+
+form input, button {
+    width: 100%;
+    padding: 12px;
+    margin: 7px 0;
+    border-radius: 10px;
+}
+
+button {
+    background: #2193b0;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b6f87;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #2193b0;
+    color: white;
+}
+
+.advice {
+    background: #fff3cd;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
